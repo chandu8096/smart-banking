@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Banking - Admin Dashboard</title>
+
+    <link rel="stylesheet" href="admin-dashboard.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+
+<body>
+
+
+    <div class="dashboard">
+
+
+        <!-- ========================================= -->
+        <!-- ADMIN HEADER -->
+        <!-- ========================================= -->
+
+        <div class="admin-header">
+
+            <h1>
+                Smart Banking Admin Dashboard
+            </h1>
+
+            <button
+                id="logoutButton"
+                type="button"
+                onclick="logoutAdmin()"
+            >
+                Logout
+            </button>
+
+        </div>
+
+
+
+        <!-- ========================================= -->
+        <!-- DASHBOARD STATISTICS -->
+        <!-- ========================================= -->
+
+        <div class="cards">
+
+            <div class="card">
+
+                <h3>
+                    Total Users
+                </h3>
+
+                <p id="totalUsers">
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Total Accounts
+                </h3>
+
+                <p id="totalAccounts">
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Total Transactions
+                </h3>
+
+                <p id="totalTransactions">
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Suspicious Transactions
+                </h3>
+
+                <p id="suspiciousTransactions">
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Rejected Transactions
+                </h3>
+
+                <p id="rejectedTransactions">
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Successful Transactions
+                </h3>
+
+                <p id="successfulTransactions">
+                    0
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ========================================= -->
+        <!-- TRANSACTION STATUS CHART -->
+        <!-- ========================================= -->
+
+        <div class="transactions-section">
+
+            <h2>
+                Transaction Status Overview
+            </h2>
+
+
+            <div
+                style="max-width: 500px; margin: 0 auto;"
+            >
+
+                <canvas id="transactionChart"></canvas>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ========================================= -->
+        <!-- CUSTOMER MANAGEMENT -->
+        <!-- ========================================= -->
+
+        <div class="transactions-section">
+
+            <h2>
+                Customer Management
+            </h2>
+
+
+            <input
+                type="text"
+                id="customerSearch"
+                placeholder="Search by customer ID, name or email..."
+            >
+
+
+            <p id="customerMessage"></p>
+
+
+            <table id="customersTable">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            ID
+                        </th>
+
+                        <th>
+                            Name
+                        </th>
+
+                        <th>
+                            Email
+                        </th>
+
+                        <th>
+                            Role
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Action
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="customersBody">
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+
+        <!-- ========================================= -->
+        <!-- ALL TRANSACTION HISTORY -->
+        <!-- ========================================= -->
+
+        <div class="transactions-section">
+
+            <h2>
+                Transaction History
+            </h2>
+
+
+            <select id="transactionStatusFilter">
+
+                <option value="ALL">
+                    All Transactions
+                </option>
+
+                <option value="SUCCESS">
+                    Successful
+                </option>
+
+                <option value="SUSPICIOUS">
+                    Suspicious
+                </option>
+
+                <option value="REJECTED">
+                    Rejected
+                </option>
+
+            </select>
+
+
+            <input
+                type="text"
+                id="allTransactionSearch"
+                placeholder="Search transaction ID or account..."
+            >
+
+
+            <table id="allTransactionsTable">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            ID
+                        </th>
+
+                        <th>
+                            From Account
+                        </th>
+
+                        <th>
+                            To Account
+                        </th>
+
+                        <th>
+                            Amount
+                        </th>
+
+                        <th>
+                            Type
+                        </th>
+
+                        <th>
+                            Date
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Suspicious
+                        </th>
+
+                        <th>
+                            Fraud Reason
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="allTransactionsBody">
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+
+        <!-- ========================================= -->
+        <!-- SUSPICIOUS TRANSACTIONS -->
+        <!-- ========================================= -->
+
+        <div class="transactions-section">
+
+            <h2>
+                Suspicious Transactions
+            </h2>
+
+
+            <input
+                type="text"
+                id="transactionSearch"
+                placeholder="Search by transaction ID or account..."
+            >
+
+
+            <table id="transactionsTable">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            ID
+                        </th>
+
+                        <th>
+                            From Account
+                        </th>
+
+                        <th>
+                            To Account
+                        </th>
+
+                        <th>
+                            Amount
+                        </th>
+
+                        <th>
+                            Type
+                        </th>
+
+                        <th>
+                            Date
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Suspicious
+                        </th>
+
+                        <th>
+                            Fraud Reason
+                        </th>
+
+                        <th>
+                            Action
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="transactionsBody">
+                </tbody>
+
+            </table>
+
+
+            <div
+                id="pagination"
+                class="pagination"
+            ></div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ========================================= -->
+    <!-- ADMIN DASHBOARD JAVASCRIPT -->
+    <!-- ========================================= -->
+
+    <script src="admin-dashboard.js"></script>
+
+
+    <!-- ========================================= -->
+    <!-- ADMIN LOGOUT -->
+    <!-- ========================================= -->
+
+    <script>
+
+        function logoutAdmin() {
+
+            const confirmed = confirm(
+                "Are you sure you want to logout?"
+            );
+
+            if (!confirmed) {
+                return;
+            }
+
+
+            localStorage.removeItem("token");
+
+
+            window.location.href =
+                "login.html";
+        }
+
+    </script>
+
+
+</body>
+
+</html>

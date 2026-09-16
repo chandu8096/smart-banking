@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard - Smart Banking</title>
+    <link rel="stylesheet" href="customer-dashboard.css">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Smart Banking - Customer Dashboard</h1>
+        <button class="logout" onclick="logout()">Logout</button>
+    </div>
+
+    <!-- My Profile -->
+    <div class="section">
+        <h2>My Profile</h2>
+
+        <div class="profile-grid">
+
+            <div class="profile-card">
+                <strong>User ID</strong>
+                <span id="profileUserId">Loading...</span>
+            </div>
+
+            <div class="profile-card">
+                <strong>Email</strong>
+                <span id="profileEmail">Loading...</span>
+            </div>
+
+            <div class="profile-card">
+                <strong>Role</strong>
+                <span id="profileRole">Loading...</span>
+            </div>
+
+            <div class="profile-card">
+                <strong>Status</strong>
+                <span id="profileStatus">Loading...</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- My Account -->
+    <div class="section">
+        <h2>My Account</h2>
+        <div id="accountsContainer">
+            Loading accounts...
+        </div>
+    </div>
+
+    <!-- Make Transfer -->
+    <div class="section">
+        <h2>Make a Transfer</h2>
+
+        <div class="form-group">
+            <label for="fromAccount">From Account</label>
+            <select id="fromAccount">
+                <option value="">Select account</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="toAccount">Destination Account ID</label>
+            <input
+                type="number"
+                id="toAccount"
+                placeholder="Enter destination account ID">
+        </div>
+
+        <div class="form-group">
+            <label for="amount">Amount</label>
+            <input
+                type="number"
+                id="amount"
+                placeholder="Enter amount"
+                min="1"
+                step="0.01">
+        </div>
+
+        <div class="form-group">
+            <label for="transactionType">Transaction Type</label>
+
+            <select id="transactionType">
+                <option value="TRANSFER">TRANSFER</option>
+                <option value="PAYMENT">PAYMENT</option>
+            </select>
+        </div>
+
+        <button class="transfer-btn" onclick="makeTransfer()">
+            Make Transfer
+        </button>
+
+        <div id="message"></div>
+    </div>
+
+    <!-- Notifications -->
+    <div class="section">
+
+        <h2>Notifications</h2>
+
+        <div id="notificationsContainer">
+
+            <p id="noNotificationsMessage">
+                No notifications yet.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- Transaction History -->
+    <div class="section">
+
+        <h2>Transaction History</h2>
+
+        <div class="filter-row">
+
+            <select id="statusFilter" onchange="loadTransactionHistory()">
+                <option value="ALL">ALL</option>
+                <option value="SUCCESS">SUCCESS</option>
+                <option value="SUSPICIOUS">SUSPICIOUS</option>
+                <option value="REJECTED">REJECTED</option>
+            </select>
+
+        </div>
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>From Account</th>
+                        <th>To Account</th>
+                        <th>Amount</th>
+                        <th>Type</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody id="transactionHistoryBody">
+                    <tr>
+                        <td colspan="8">Loading...</td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+<script src="customer-dashboard.js"></script>
+
+</body>
+</html>

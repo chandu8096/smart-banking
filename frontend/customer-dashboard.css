@@ -1,0 +1,395 @@
+   * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f3f6fa;
+            color: #222;
+        }
+
+        .dashboard {
+            width: 90%;
+            max-width: 1100px;
+            margin: 30px auto;
+        }
+
+        .header {
+            background: #1f4e79;
+            color: white;
+            padding: 20px 25px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .logout {
+            background: #d9534f;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .logout:hover {
+            background: #c9302c;
+        }
+
+        .section {
+            background: white;
+            margin-top: 25px;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .section h2 {
+            margin-top: 0;
+            color: #1f4e79;
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .profile-card {
+            background: #f3f6fa;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .profile-card strong {
+            display: block;
+            margin-bottom: 6px;
+            color: #555;
+        }
+
+        .account-card {
+            border: 1px solid #ddd;
+            padding: 18px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+
+        .account-card strong {
+            color: #1f4e79;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .transfer-btn {
+            background: #1f4e79;
+            color: white;
+            border: none;
+            padding: 11px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .transfer-btn:hover {
+            background: #163a5c;
+        }
+
+        #message {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .filter-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .filter-row select {
+            max-width: 250px;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        th {
+            background: #1f4e79;
+            color: white;
+        }
+
+        tr:hover {
+            background: #f7f9fb;
+        }
+
+        .status-success {
+            color: #198754;
+            font-weight: bold;
+        }
+
+        .status-suspicious {
+            color: #d97706;
+            font-weight: bold;
+        }
+
+        .status-rejected {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .status-default {
+            font-weight: bold;
+        }
+
+        .details-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 7px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .details-btn:hover {
+            background: #545b62;
+        }
+
+        /* Transaction Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.55);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            padding: 20px;
+        }
+
+        .transaction-modal {
+            background: white;
+            width: 100%;
+            max-width: 650px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+        }
+
+        .modal-header {
+            background: #1f4e79;
+            color: white;
+            padding: 18px 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 21px;
+        }
+
+        .close-modal {
+            background: transparent;
+            color: white;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            padding: 22px;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .detail-item {
+            background: #f5f7fa;
+            padding: 13px;
+            border-radius: 7px;
+        }
+
+        .detail-item strong {
+            display: block;
+            color: #555;
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+
+        .detail-item span {
+            font-size: 15px;
+            word-break: break-word;
+        }
+
+        .security-box {
+            margin-top: 20px;
+            padding: 16px;
+            border-radius: 8px;
+            border-left: 5px solid #6c757d;
+            background: #f5f7fa;
+        }
+
+        .security-box h3 {
+            margin-top: 0;
+        }
+
+        .security-safe {
+            border-left-color: #198754;
+            background: #eaf7ef;
+        }
+
+        .security-warning {
+            border-left-color: #d97706;
+            background: #fff7e6;
+        }
+
+        .security-danger {
+            border-left-color: #dc3545;
+            background: #fdecec;
+        }
+
+        .modal-footer {
+            padding: 15px 22px;
+            border-top: 1px solid #ddd;
+            text-align: right;
+        }
+
+        .close-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 9px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        /* CUSTOMER NOTIFICATIONS */
+
+        .notification {
+            padding: 14px 16px;
+            margin-bottom: 10px;
+            border-radius: 7px;
+            border-left: 5px solid #6c757d;
+            background: #f5f7fa;
+        }
+
+        .notification-success {
+            border-left-color: #198754;
+            background: #eaf7ef;
+        }
+
+        .notification-warning {
+            border-left-color: #d97706;
+            background: #fff7e6;
+        }
+
+        .notification-danger {
+            border-left-color: #dc3545;
+            background: #fdecec;
+        }
+
+        .notification-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .notification-date {
+            font-size: 12px;
+            color: #666;
+            margin-top: 6px;
+        }
+
+        @media (max-width: 800px) {
+            .profile-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .dashboard {
+                width: 95%;
+            }
+
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-row {
+                flex-direction: column;
+            }
+
+            .filter-row select {
+                max-width: none;
+            }
+        }
+        .notification-action {
+    margin-top: 10px;
+}
+
+.mark-read-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #0d6efd;
+    color: white;
+}
+
+.mark-read-btn:hover {
+    opacity: 0.9;
+}
+
+.notification-read {
+    font-size: 13px;
+    font-weight: bold;
+}
